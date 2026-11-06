@@ -24,3 +24,5 @@ htmlcov/
 .DS_Store
 Thumbs.db
 chroma_data/
+# Local backup files
+requirements_backup.txt

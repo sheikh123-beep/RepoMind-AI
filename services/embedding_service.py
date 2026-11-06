@@ -1,25 +1,27 @@
-from sentence_transformers import SentenceTransformer
+from fastembed import TextEmbedding
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
-# Load model locally
-model = SentenceTransformer(MODEL_NAME, device="cpu")
+# Load lightweight ONNX embedding model
+model = TextEmbedding(
+    model_name=MODEL_NAME
+)
 
 
 def generate_embedding(text: str):
+
     if not text or not text.strip():
         raise ValueError("Cannot generate embedding for empty text.")
 
-    embedding = model.encode(
-        text,
-        convert_to_numpy=True,
-        normalize_embeddings=True
-    )
+    embedding = list(
+        model.embed([text.strip()])
+    )[0]
 
     return embedding.tolist()
 
 
 def generate_embeddings(texts: list):
+
     valid_texts = [
         text.strip()
         for text in texts
@@ -29,11 +31,9 @@ def generate_embeddings(texts: list):
     if not valid_texts:
         return []
 
-    embeddings = model.encode(
-        valid_texts,
-        convert_to_numpy=True,
-        normalize_embeddings=True,
-        show_progress_bar=True
-    )
+    embeddings = model.embed(valid_texts)
 
-    return embeddings.tolist()
+    return [
+        embedding.tolist()
+        for embedding in embeddings
+    ]

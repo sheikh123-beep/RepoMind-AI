@@ -3,7 +3,7 @@ import streamlit as st
 import requests
 import json
 import pandas as pd
-
+import os
 
 # ==========================================
 # PAGE CONFIGURATION
@@ -21,7 +21,18 @@ st.set_page_config(
 # API CONFIGURATION
 # ==========================================
 
-API_BASE_URL = "http://127.0.0.1:8000"
+try:
+    API_BASE_URL = st.secrets.get(
+        "API_BASE_URL",
+        os.getenv("API_BASE_URL", "http://127.0.0.1:8000")
+    )
+except Exception:
+    API_BASE_URL = os.getenv(
+        "API_BASE_URL",
+        "http://127.0.0.1:8000"
+    )
+
+API_BASE_URL = API_BASE_URL.rstrip("/")
 
 
 # ==========================================
