@@ -195,7 +195,14 @@ python test_repository_analyzer.py
 
 B.Tech Computer Science & Engineering
 
-GitHub: [sheikh123-beep](https://github.com/sheikh123-beep)
+GitHub: [sheikh123-beep](htt## 🚀 Live Demo
+
+🌐 **[Try RepoMind AI – Live Application](https://repomind-ai-rmdx8bskcy6kd7mfvicuy7.streamlit.app/)**
+
+💻 **[View Source Code on GitHub](https://github.com/sheikh123-beep/RepoMind-AI)**
+
+> Explore GitHub repositories, understand codebases, ask AI-powered questions, and detect potential bugs using RepoMind AI.ps://github.com/sheikh123-beep)
+
 
 ---
 
